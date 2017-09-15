@@ -1,6 +1,6 @@
 package com.nick;
 
-import com.nick.direct.DirectProducer;
+import com.nick.topic.TopicProducer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +12,22 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DirectExchangeTest {
+public class TopicExchangeTest {
     @Autowired
-    private DirectProducer directProducer;
+    private TopicProducer topicProducer;
 
     @Test
-    public void Produce() {
-        directProducer.send();
+    public void ProduceAll() {
+        topicProducer.sendAll();
+    }
+
+    @Test
+    public void ProduceAB() {
+        topicProducer.sendAB();
+    }
+
+    @Test
+    public void ProduceBC() {
+        topicProducer.sendBC();
     }
 }

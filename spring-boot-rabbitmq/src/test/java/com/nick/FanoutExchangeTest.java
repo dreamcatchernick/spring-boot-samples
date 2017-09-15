@@ -1,6 +1,6 @@
 package com.nick;
 
-import com.nick.direct.DirectProducer;
+import com.nick.fanout.FanoutProducer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +12,12 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DirectExchangeTest {
+public class FanoutExchangeTest {
     @Autowired
-    private DirectProducer directProducer;
+    private FanoutProducer fanoutProducer;
 
     @Test
     public void Produce() {
-        directProducer.send();
+        fanoutProducer.send();
     }
 }

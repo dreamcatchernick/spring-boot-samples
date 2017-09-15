@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@RabbitListener(queues = "testqueue")
+@RabbitListener(queues = "directQueue")
 public class DirectConsumer {
 
     @RabbitHandler
