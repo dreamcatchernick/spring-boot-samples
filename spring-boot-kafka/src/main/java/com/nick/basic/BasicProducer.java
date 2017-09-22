@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * Created by dreamcatchernick on 19/09/2017.
  */
 @Component
-public class Producer {
+public class BasicProducer {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 

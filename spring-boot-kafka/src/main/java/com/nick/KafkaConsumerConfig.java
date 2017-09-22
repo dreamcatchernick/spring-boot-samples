@@ -22,7 +22,7 @@ public class KafkaConsumerConfig {
     @Value("${kafka.bootstrap-servers}")
     private String bootstrapServers;
 
-    @Value("${kafka.topic.testtopic}")
+    @Value("${kafka.topic.advancedtopic}")
     private String topic;
 
     @Bean

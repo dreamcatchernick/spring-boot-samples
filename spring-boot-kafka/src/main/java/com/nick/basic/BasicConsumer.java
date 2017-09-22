@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
  * Created by dreamcatchernick on 19/09/2017.
  */
 @Component
-public class Consumer {
+public class BasicConsumer {
 
-    @KafkaListener(topics = "${kafka.topic.testtopic}")
+    @KafkaListener(topics = "${kafka.topic.basictopic}")
     public void receive(String payload) {
         System.out.println(payload);
     }
