@@ -1,4 +1,4 @@
-package com.nick;
+package com.nick.advanced;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -18,7 +18,7 @@ import java.util.Map;
  */
 @Configuration
 @EnableKafka
-public class KafkaConsumerConfig {
+public class AdvancedConsumerConfig {
     @Value("${kafka.bootstrap-servers}")
     private String bootstrapServers;
 
@@ -26,21 +26,17 @@ public class KafkaConsumerConfig {
     private String topic;
 
     @Bean
-    public ConsumerFactory<String, String> consumerFactory() {
+    public ConcurrentKafkaListenerContainerFactory<String, String> advancedKafkaListenerContainerFactory() {
+
         Map<String, Object> configProps = new HashMap<>();
-        // list of host:port pairs used for establishing the initial connections to the kafka cluster
         configProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         configProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configProps.put(ConsumerConfig.GROUP_ID_CONFIG, topic);
-        return new DefaultKafkaConsumerFactory<>(configProps);
-    }
 
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, String> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory());
+        factory.setConsumerFactory(new DefaultKafkaConsumerFactory<>(configProps));
 
         return factory;
     }

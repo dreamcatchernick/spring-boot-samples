@@ -9,8 +9,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class BasicConsumer {
 
-    @KafkaListener(topics = "${kafka.topic.basictopic}")
-    public void receive(String payload) {
-        System.out.println(payload);
+    @KafkaListener(topics = "${kafka.topic.basictopic}", containerFactory = "basicKafkaListenerContainerFactory")
+    public void receive(Basic basic) {
+
+        System.out.println(basic.toString());
     }
 }

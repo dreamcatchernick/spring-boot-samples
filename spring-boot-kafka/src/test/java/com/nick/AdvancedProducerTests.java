@@ -22,6 +22,6 @@ public class AdvancedProducerTests {
     @Test
     public void sendRecord() {
 
-        producer.send(topic , "this is message from advanced producer" , 20);
+        producer.send(topic , "this is message from advanced producer" , 10);
     }
 }

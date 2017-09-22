@@ -1,6 +1,7 @@
 package com.nick.basic;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
@@ -10,10 +11,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class BasicProducer {
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    @Qualifier("basicKafkaTemplate")
+    private KafkaTemplate<String, Basic> kafkaTemplate;
 
-    public void send(String topic , String payload) {
-        kafkaTemplate.send(topic, payload);
+    public void send(String topic , Basic basic) {
+        kafkaTemplate.send(topic, basic);
     }
 
 }
